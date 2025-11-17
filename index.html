@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Royal Tours - We Make Sweet Memories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+:root {
+  --crimson: #DC143C;
+  --deep-blue: #1E3A8A;
+  --orange: #FFA500;
+  --light-gray: #F5F5F5;
+  --dark-gray: #333333;
+  --color-white: #FFFFFF;
+  --color-border: rgba(0,0,0,0.1);
+  --color-text-secondary: #666;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+  --shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+  --radius-sm: 6px;
+  --radius-base: 8px;
+  --radius-lg: 12px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: var(--dark-gray); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.header { background: var(--color-white); box-shadow: var(--shadow-md); position: sticky; top: 0; z-index: 1000; }
+.header-top { background: var(--crimson); color: var(--color-white); padding: 8px 0; font-size: 13px; }
+.header-top .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+.contact-info { display: flex; gap: 24px; flex-wrap: wrap; }
+.contact-info span { display: flex; align-items: center; gap: 8px; }
+.header-actions { display: flex; gap: 12px; }
+.btn-small { padding: 4px 12px; background: var(--color-white); color: var(--crimson); border: none; border-radius: 6px; font-weight: 500; cursor: pointer; text-decoration: none; font-size: 12px; transition: background 0.3s; }
+.btn-small:hover { background: var(--light-gray); }
+.header-main { padding: 16px 0; }
+.header-main .container { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.logo { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--dark-gray); }
+.logo-icon { font-size: 28px; color: var(--crimson); font-weight: bold; position: relative; }
+.logo-icon i { position: absolute; top: -4px; right: -6px; font-size: 12px; }
+.logo-text { font-size: 18px; font-weight: bold; color: var(--crimson); letter-spacing: 1px; }
+nav { display: flex; align-items: center; gap: 24px; flex: 1; }
+.nav-menu { display: flex; list-style: none; gap: 24px; margin: 0; }
+.nav-menu a { text-decoration: none; color: var(--dark-gray); font-weight: 500; font-size: 14px; transition: color 0.3s; }
+.nav-menu a:hover, .nav-menu a.active { color: var(--crimson); }
+.nav-secondary { display: flex; list-style: none; gap: 16px; margin: 0 0 0 auto; }
+.nav-secondary a { text-decoration: none; color: var(--color-text-secondary); font-size: 13px; transition: color 0.3s; }
+.nav-secondary a:hover { color: var(--crimson); }
+.nav-search { position: relative; margin-left: 20px; }
+.nav-search input { padding: 8px 12px; border: 1px solid var(--color-border); border-radius: 6px; width: 240px; font-size: 13px; }
+.nav-global-search-dropdown { position: absolute; top: 100%; left: 0; right: 0; background: var(--color-white); box-shadow: var(--shadow-lg); border-radius: 6px; margin-top: 4px; max-height: 300px; overflow-y: auto; z-index: 1001; display: none; }
+.nav-search-result { padding: 12px 16px; cursor: pointer; border-bottom: 1px solid var(--color-border); transition: background 0.2s; font-size: 13px; }
+.nav-search-result:hover { background: var(--light-gray); }
+.nav-search-result span { color: var(--color-text-secondary); font-size: 11px; }
+.hamburger-menu { display: none; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; padding: 8px; }
+.hamburger-menu span { width: 24px; height: 2px; background: var(--crimson); }
+.mobile-menu { display: none; position: fixed; top: 120px; left: 0; right: 0; background: var(--color-white); box-shadow: var(--shadow-lg); z-index: 999; }
+.mobile-menu ul { list-style: none; padding: 16px; }
+.mobile-menu li { padding: 12px 0; border-bottom: 1px solid var(--color-border); }
+.mobile-menu a { text-decoration: none; color: var(--dark-gray); font-size: 14px; }
+.mobile-menu.hidden { display: none; }
+.hero-home { position: relative; min-height: 600px; background: linear-gradient(135deg, var(--deep-blue) 0%, var(--crimson) 100%); display: flex; align-items: center; color: var(--color-white); }
+.hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); }
+.hero-content { position: relative; z-index: 1; text-align: center; }
+.hero-home h1 { font-size: 56px; margin-bottom: 16px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+.tagline { font-size: 24px; font-style: italic; color: var(--orange); margin-bottom: 8px; }
+.hero-subtitle { font-size: 18px; margin-bottom: 32px; }
+.search-bar { background: var(--color-white); padding: 24px; border-radius: 12px; display: flex; gap: 16px; max-width: 1000px; margin: 0 auto; box-shadow: var(--shadow-lg); flex-wrap: wrap; }
+.search-field { flex: 1; min-width: 200px; display: flex; align-items: center; gap: 8px; border: 1px solid var(--color-border); padding: 12px; border-radius: 8px; }
+.search-field label { color: var(--crimson); font-size: 16px; }
+.search-field select, .search-field input { flex: 1; border: none; outline: none; font-size: 14px; }
+.btn-search { background: var(--crimson); color: var(--color-white); border: none; padding: 16px 32px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.3s; white-space: nowrap; }
+.btn-search:hover { background: #B01030; }
+.section-title { font-size: 32px; color: var(--crimson); text-align: center; margin-bottom: 16px; }
+.section-subtitle { text-align: center; color: var(--color-text-secondary); margin-bottom: 32px; font-size: 16px; }
+.featured-destinations { padding: 60px 0; background: var(--color-white); }
+.destinations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.destination-card { position: relative; height: 300px; border-radius: 12px; overflow: hidden; cursor: pointer; box-shadow: var(--shadow-md); transition: transform 0.3s; }
+.destination-card:hover { transform: translateY(-8px); }
+.dest-image { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.3s; }
+.destination-card:hover .dest-image { transform: scale(1.1); }
+.dest-content { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 24px; color: var(--color-white); }
+.dest-content h3 { font-size: 20px; margin-bottom: 8px; }
+.dest-badge { position: absolute; top: 16px; right: 16px; background: var(--orange); color: var(--color-white); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+.popular-tours { padding: 60px 0; background: var(--light-gray); }
+.tours-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+.tour-card { background: var(--color-white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow-md); transition: transform 0.3s; }
+.tour-card:hover { transform: translateY(-5px); }
+.tour-image { height: 220px; background-size: cover; background-position: center; }
+.tour-content { padding: 20px; }
+.tour-content h3 { font-size: 18px; margin-bottom: 12px; color: var(--dark-gray); }
+.tour-meta { display: flex; justify-content: space-between; margin-bottom: 12px; color: var(--color-text-secondary); font-size: 13px; }
+.tour-meta span { display: flex; align-items: center; gap: 4px; }
+.tour-highlights { color: var(--color-text-secondary); font-size: 13px; margin-bottom: 16px; line-height: 1.6; }
+.tour-footer { display: flex; justify-content: space-between; align-items: center; }
+.tour-price { font-size: 20px; font-weight: bold; color: var(--crimson); }
+.tour-price span { font-size: 12px; color: var(--color-text-secondary); font-weight: normal; }
+.btn-primary { background: var(--crimson); color: var(--color-white); padding: 12px 24px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s; }
+.btn-primary:hover { background: #B01030; }
+.btn-secondary { background: var(--deep-blue); color: var(--color-white); padding: 12px 24px; border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s; }
+.btn-secondary:hover { background: #1E40AF; }
+.btn-lg { padding: 16px 32px; font-size: 16px; }
+.text-center { text-align: center; }
+.why-choose-us { padding: 60px 0; background: var(--color-white); }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; }
+.feature-card { text-align: center; padding: 24px; }
+.feature-icon { font-size: 48px; color: var(--crimson); margin-bottom: 16px; }
+.feature-card h3 { font-size: 18px; margin-bottom: 12px; color: var(--dark-gray); }
+.feature-card p { color: var(--color-text-secondary); line-height: 1.6; }
+.testimonials { padding: 60px 0; background: var(--light-gray); }
+.testimonials-carousel { max-width: 600px; margin: 0 auto; text-align: center; }
+.testimonial-card { background: var(--color-white); padding: 32px; border-radius: 12px; box-shadow: var(--shadow-md); margin-bottom: 16px; }
+.testimonial-rating { color: var(--orange); margin-bottom: 12px; font-size: 16px; }
+.testimonial-text { font-style: italic; color: var(--color-text-secondary); margin-bottom: 16px; line-height: 1.6; font-size: 16px; }
+.testimonial-author strong { display: block; color: var(--dark-gray); margin-bottom: 4px; font-size: 18px; }
+.testimonial-author span { font-size: 13px; color: var(--color-text-secondary); }
+.testimonial-arrows { display: flex; gap: 12px; justify-content: center; margin-top: 16px; }
+.testimonial-arrows button { background: var(--crimson); color: var(--color-white); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 16px; transition: background 0.3s; }
+.testimonial-arrows button:hover { background: #B01030; }
+.cta-section { padding: 80px 0; background: var(--deep-blue); color: var(--color-white); text-align: center; }
+.cta-section h2 { font-size: 36px; margin-bottom: 16px; }
+.cta-section p { font-size: 18px; margin-bottom: 32px; }
+.cta-buttons { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.newsletter { padding: 60px 0; background: var(--color-white); }
+.newsletter-content { text-align: center; max-width: 600px; margin: 0 auto; }
+.newsletter-content h3 { font-size: 24px; color: var(--dark-gray); margin-bottom: 12px; }
+.newsletter-content p { color: var(--color-text-secondary); margin-bottom: 24px; }
+.newsletter-form { display: flex; gap: 12px; }
+.newsletter-form input { flex: 1; padding: 12px 16px; border: 1px solid var(--color-border); border-radius: 8px; font-size: 14px; }
+.footer { background: var(--dark-gray); color: var(--color-white); padding: 60px 0 0; }
+.footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; margin-bottom: 32px; }
+.footer-column h4 { margin-bottom: 16px; color: var(--orange); }
+.footer-column ul { list-style: none; }
+.footer-column ul li { margin-bottom: 8px; }
+.footer-column a { color: var(--color-white); text-decoration: none; transition: color 0.3s; }
+.footer-column a:hover { color: var(--orange); }
+.footer-column ul li i { color: var(--orange); margin-right: 8px; }
+.social-links { display: flex; gap: 16px; margin-top: 16px; }
+.social-links a { width: 40px; height: 40px; background: var(--crimson); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-white); transition: background 0.3s; }
+.social-links a:hover { background: var(--orange); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding: 24px 0; text-align: center; font-size: 13px; }
+.footer-bottom a { color: var(--orange); text-decoration: none; }
+.whatsapp-float { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; color: var(--color-white); box-shadow: 0 4px 12px rgba(0,0,0,0.3); cursor: pointer; z-index: 999; text-decoration: none; transition: transform 0.3s; }
+.whatsapp-float:hover { transform: scale(1.1); }
+.back-to-top { position: fixed; bottom: 100px; right: 30px; width: 50px; height: 50px; background: var(--crimson); border-radius: 50%; display: none; align-items: center; justify-content: center; color: var(--color-white); cursor: pointer; z-index: 999; transition: transform 0.3s; }
+.back-to-top.show { display: flex; }
+.back-to-top:hover { transform: scale(1.1); }
+@media (max-width: 768px) {
+  .nav-menu, .nav-secondary, .nav-search { display: none; }
+  .hamburger-menu { display: flex; }
+  .mobile-menu { display: block; }
+  .hero-home h1 { font-size: 36px; }
+  .search-bar { flex-direction: column; }
+  .search-field { width: 100%; }
+  .destinations-grid, .tours-grid, .features-grid { grid-template-columns: 1fr; }
+  .cta-buttons { flex-direction: column; align-items: stretch; }
+  .newsletter-form { flex-direction: column; }
+}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +91 91599 73503</span>
+                    <span><i class="fas fa-envelope"></i> info@grandroyaltours.in</span>
+                </div>
+                <div class="header-actions">
+                    <a href="tel:+919159973503" class="btn-small"><i class="fas fa-phone"></i> Call Now</a>
+                    <a href="https://wa.me/919159973503" target="_blank" class="btn-small"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+        </div>
+        <div class="header-main">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">GR<i class="fas fa-plane"></i></div>
+                    <div class="logo-text">GRAND ROYAL TOURS</div>
+                </a>
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#home" class="active">Home</a></li>
+                        <li><a href="#tours">Group Tours</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                    <ul class="nav-secondary">
+                        <li><a href="#educational">Educational Tours</a></li>
+                        <li><a href="#corporate">Corporate Tours</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-search">
+                    <input type="search" id="nav-global-search" placeholder="Search packages or destinations..." autocomplete="off">
+                    <div id="nav-global-search-results" class="nav-global-search-dropdown"></div>
+                </div>
+                <button class="hamburger-menu" aria-label="Open menu" onclick="toggleMobileMenu()">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+        <nav id="mobile-menu" class="mobile-menu hidden">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tours">Group Tours</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#educational">Educational Tours</a></li>
+                <li><a href="#corporate">Corporate Tours</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero-home" id="home">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Grand Royal Tours</h1>
+            <p class="tagline">We Make Sweet Memories</p>
+            <p class="hero-subtitle">Your Trusted Travel Partner for 20+ Years</p>
+            <div class="search-bar">
+                <div class="search-field">
+                    <label><i class="fas fa-map-marker-alt"></i></label>
+                    <select id="destination">
+                        <option value="">Select Destination</option>
+                        <option value="bali">Bali</option>
+                        <option value="dubai">Dubai</option>
+                        <option value="usa">USA</option>
+                        <option value="europe">Europe</option>
+                        <option value="thailand">Thailand</option>
+                        <option value="japan">Japan</option>
+                        <option value="maldives">Maldives</option>
+                    </select>
+                </div>
+                <div class="search-field">
+                    <label><i class="fas fa-calendar"></i></label>
+                    <input type="date" id="departure" placeholder="Departure Date">
+                </div>
+                <div class="search-field">
+                    <label><i class="fas fa-users"></i></label>
+                    <select id="persons">
+                        <option value="">Number of Persons</option>
+                        <option value="1">1 Person</option>
+                        <option value="2">2 Persons</option>
+                        <option value="3-5">3-5 Persons</option>
+                        <option value="6-10">6-10 Persons</option>
+                        <option value="10+">10+ Persons</option>
+                    </select>
+                </div>
+                <button class="btn-search" onclick="searchTours()"><i class="fas fa-search"></i> Search Tours</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-destinations" id="destinations">
+        <div class="container">
+            <h2 class="section-title">Featured Destinations</h2>
+            <p class="section-subtitle">Explore the world's most breathtaking locations with our expertly crafted tours</p>
+            <div id="destinations-grid" class="destinations-grid"></div>
+        </div>
+    </section>
+
+    <section class="popular-tours" id="tours">
+        <div class="container">
+            <h2 class="section-title">Popular Group Tours</h2>
+            <p class="section-subtitle">Join our carefully curated group tours with Tamil-English speaking guides</p>
+            <div id="tours-grid" class="tours-grid"></div>
+            <div class="text-center" style="margin-top: 32px;">
+                <button onclick="showAllTours()" class="btn-secondary">View All 81 Tours</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-choose-us" id="about">
+        <div class="container">
+            <h2 class="section-title">Why Choose Grand Royal Tours?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-award"></i></div>
+                    <h3>20+ Years Experience</h3>
+                    <p>Two decades of excellence in delivering unforgettable travel experiences</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-star"></i></div>
+                    <h3>4.8★ Google Rating</h3>
+                    <p>Highly rated by thousands of satisfied customers across India</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3>25,000+ Travelers</h3>
+                    <p>Successfully served over 25,000 happy travelers across 81 tour packages</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-language"></i></div>
+                    <h3>Tamil-English Guides</h3>
+                    <p>Expert guides fluent in Tamil and English for seamless communication</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Customers Say</h2>
+            <div id="testimonials-carousel" class="testimonials-carousel"></div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Plan Your Perfect Trip</h2>
+            <p>Ready to create unforgettable memories? Get in touch with us today!</p>
+            <div class="cta-buttons">
+                <button onclick="showContactForm()" class="btn-primary btn-lg">Contact Us</button>
+                <a href="tel:+919159973503" class="btn-secondary btn-lg"><i class="fas fa-phone"></i> Call Now</a>
+                <a href="https://wa.me/919159973503" target="_blank" class="btn-secondary btn-lg"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h3>Subscribe to Our Newsletter</h3>
+                <p>Get the latest travel deals, tips, and destination guides delivered to your inbox</p>
+                <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo" style="margin-bottom: 16px;">
+                        <div class="logo-icon">GR<i class="fas fa-plane"></i></div>
+                        <div class="logo-text" style="color: white;">GRAND ROYAL TOURS</div>
+                    </div>
+                    <p style="margin-bottom: 12px; font-style: italic; color: var(--orange);">We Make Sweet Memories</p>
+                    <p style="margin-bottom: 16px;">With over 20 years of experience, Grand Royal Tours is your trusted partner for unforgettable travel experiences.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/grandroyaltours" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com/grandroyaltours" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com/grandroyaltours" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a href="https://linkedin.com/company/grandroyaltours" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#tours">Group Tours</a></li>
+                        <li><a href="#destinations">Destinations</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Popular Destinations</h4>
+                    <ul>
+                        <li><a href="#bali">Bali Tours</a></li>
+                        <li><a href="#dubai">Dubai Tours</a></li>
+                        <li><a href="#usa">USA Tours</a></li>
+                        <li><a href="#europe">Europe Tours</a></li>
+                        <li><a href="#thailand">Thailand Tours</a></li>
+                        <li><a href="#japan">Japan Tours</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Gandhipuram, Coimbatore</li>
+                        <li><i class="fas fa-map-marker-alt"></i> T. Nagar, Chennai</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Whitefield, Bangalore</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Salem City, Salem</li>
+                        <li style="margin-top: 12px;"><i class="fas fa-phone"></i> +91 91599 73503</li>
+                        <li><i class="fas fa-envelope"></i> info@grandroyaltours.in</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9AM-6PM</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>Copyright &copy; 2025 Grand Royal Tours | <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms &amp; Conditions</a> | <a href="#payment">Payment Terms</a> | <a href="#cancellation">Cancellation Policy</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/919159973503" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
